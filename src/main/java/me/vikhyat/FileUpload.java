@@ -24,15 +24,16 @@ public class FileUpload extends HttpServlet {
 	try {
 		ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
 		List<FileItem> multifiles = sf.parseRequest(request);
-		
+		//downloads the user given files to the server.
 		for(FileItem item : multifiles){
 			item.write(new File(homeDirectory + item.getName()));
 			printWeb.println("File \""+ item.getName() +"\" was uploaded successfully");
 		}
+		//updates the database after the files have been uploaded to make files searchable.
+		DataBase.update();
 		}
 	catch(Exception e) {
 			System.out.println(e);
 		}
 	}
-	DataBase.update();
 }

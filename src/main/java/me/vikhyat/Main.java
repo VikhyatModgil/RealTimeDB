@@ -7,9 +7,9 @@ public class Main {
 		return homeDirectory;
 	}
 	
-	
+	//testing stufff
 	public static void main(String[] args) {
-		DataBase.update(homeDirectory);
+		DataBase.update();
 
 	}
 
