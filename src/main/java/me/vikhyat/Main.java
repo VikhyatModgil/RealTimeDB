@@ -7,9 +7,10 @@ public class Main {
 		return homeDirectory;
 	}
 	
-	//testing stufff
+	//testing stuff
 	public static void main(String[] args) {
 		DataBase.update();
+		DataBase.printArray();
 
 	}
 
