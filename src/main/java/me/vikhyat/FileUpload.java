@@ -1,6 +1,7 @@
 package me.vikhyat;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,21 +16,23 @@ public class FileUpload extends HttpServlet {
 	private static final long serialVersionUID = 1;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String databaseDir = "C:\\Users\\vikhy\\Desktop\\DbtestFolder\\";
-		
-		try {
+		//gets the location on where to store the data once its uploaded
+		String homeDirectory = Main.homeDirectory();
+		//Prints the given object to the website.
+		PrintWriter printWeb = response.getWriter();
+		//tries to upload data to the given directory
+	try {
 		ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
 		List<FileItem> multifiles = sf.parseRequest(request);
 		
 		for(FileItem item : multifiles){
-			item.write(new File(databaseDir + item.getName()));
+			item.write(new File(homeDirectory + item.getName()));
+			printWeb.println("File \""+ item.getName() +"\" was uploaded successfully");
 		}
-		
 		}
-		catch(Exception e) {
+	catch(Exception e) {
 			System.out.println(e);
 		}
-		System.out.println("good job yal goof it works!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! yeet");
 	}
-
+	DataBase.update();
 }
