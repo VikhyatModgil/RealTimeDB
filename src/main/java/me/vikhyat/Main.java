@@ -9,9 +9,7 @@ public class Main {
 	
 	//testing stuff
 	public static void main(String[] args) {
-		DataBase.update();
-		DataBase.printArray();
-
+		DataBase.run();
 	}
 
 
