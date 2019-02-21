@@ -30,7 +30,7 @@ public class FileUpload extends HttpServlet {
 			printWeb.println("File \""+ item.getName() +"\" was uploaded successfully");
 		}
 		//updates the database after the files have been uploaded to make files searchable.
-		DataBase.update();
+		DataBase.run();
 		}
 	catch(Exception e) {
 			System.out.println(e);
