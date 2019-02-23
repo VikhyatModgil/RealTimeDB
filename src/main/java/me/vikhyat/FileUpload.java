@@ -17,6 +17,7 @@ public class FileUpload extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//gets the location on where to store the data once its uploaded
+		DataBase.run();
 		String homeDirectory = Main.homeDirectory();
 		//Prints the given object to the website.
 		PrintWriter printWeb = response.getWriter();
